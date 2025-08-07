@@ -1,2 +1,2 @@
-# template-spring-boot
+# Template Spring Boot
 Spring Boot模板项目
