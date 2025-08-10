@@ -1,6 +1,6 @@
-# Template Spring Boot
+# Template Spring Cloud
 
-Spring Boot模板项目，用于快速创建新的Spring Boot项目.
+Spring Cloud 微服务模板项目，用于快速创建新的Spring Cloud项目.
 
 ## 初始化修改
 
@@ -23,16 +23,15 @@ rm ./rename-project.sh
 
 - 包括项目的依赖、版本号以及描述信息等.
 
-### 4. 在Github中添加secret:
+### 4. 在Github中添加 Repository secrets:
 
-- `GITEE_RSA_PRIVATE_KEY`: Gitee的私钥，由管理员保管。
+- `DOCKER_USERNAME`
+- `DOCKER_ACCESS_TOKEN`
+  
+### 5. 在Nacos中添加项目配置
 
-### 5. 配置Gitee同步 
-
-- 在Github中添加secret `GITEE_RSA_PRIVATE_KEY`，此私钥由管理与保管。
-- 修改文件 [sync-to-gitee.yml](.github/workflows/sync-to-gitee.yml) 中以下参数:
-    - source-repo: `github.com/<your-github-username>/<your-repo-name>`
-    - destination-repo: `gitee.com/<your-gitee-username>/<your-repo-name>`
+- 配置 ***DataId*** 为`<new-project-name>-config.yaml`
+- 配置的 ***group*** 为`BASE`
 
 
 ----------------------------删除以上内容，并按需修改如下README.md-----------------------------

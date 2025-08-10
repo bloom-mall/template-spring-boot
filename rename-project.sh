@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 项目重命名脚本
-# 功能：将template-spring-boot项目重命名为指定项目名，并更新相应的包名
+# 功能：将template-spring-cloud项目重命名为指定项目名，并更新相应的包名
 # 用法：./rename-project.sh <项目名> (项目名必须使用中划线分隔)
 
 # 检查是否提供了项目名参数
@@ -22,8 +22,8 @@ PROJECT_NAME="$1"
 PACKAGE_NAME=$(echo "$PROJECT_NAME" | tr '-' '.')
 
 # 替换前的项目名和包名
-OLD_PROJECT_NAME="template-spring-boot"
-OLD_PACKAGE_NAME="template_spring_boot"
+OLD_PROJECT_NAME="template-spring-cloud"
+OLD_PACKAGE_NAME="template_spring_cloud"
 # 根包名前缀
 ROOT_PACKAGE_PREFIX="io.bloom"
 
@@ -71,11 +71,11 @@ fi
 echo -e "\n============================\n"
 
 # 更新主代码包目录结构
-OLD_PACKAGE_DIR="src/main/groovy/${ROOT_PACKAGE_PREFIX//.//}/$OLD_PACKAGE_NAME"
+OLD_PACKAGE_DIR="src/main/java/${ROOT_PACKAGE_PREFIX//.//}/$OLD_PACKAGE_NAME"
 if [ -d "$OLD_PACKAGE_DIR" ]; then
   # 将点号分隔的包名转换为目录路径
   PACKAGE_DIR=$(echo "$PACKAGE_NAME" | tr '.' '/')
-  NEW_PACKAGE_DIR="src/main/groovy/${ROOT_PACKAGE_PREFIX//.//}/$PACKAGE_DIR"
+  NEW_PACKAGE_DIR="src/main/java/${ROOT_PACKAGE_PREFIX//.//}/$PACKAGE_DIR"
   mkdir -p "$NEW_PACKAGE_DIR"
   mv "$OLD_PACKAGE_DIR"/* "$NEW_PACKAGE_DIR/"
   rm -rf "$OLD_PACKAGE_DIR"
@@ -91,11 +91,11 @@ fi
 echo -e "\n============================\n"
 
 # 更新测试代码包目录结构
-OLD_TEST_PACKAGE_DIR="src/test/groovy/${ROOT_PACKAGE_PREFIX//.//}/$OLD_PACKAGE_NAME"
+OLD_TEST_PACKAGE_DIR="src/test/java/${ROOT_PACKAGE_PREFIX//.//}/$OLD_PACKAGE_NAME"
 if [ -d "$OLD_TEST_PACKAGE_DIR" ]; then
   # 将点号分隔的包名转换为目录路径
   PACKAGE_DIR=$(echo "$PACKAGE_NAME" | tr '.' '/')
-  NEW_TEST_PACKAGE_DIR="src/test/groovy/${ROOT_PACKAGE_PREFIX//.//}/$PACKAGE_DIR"
+  NEW_TEST_PACKAGE_DIR="src/test/java/${ROOT_PACKAGE_PREFIX//.//}/$PACKAGE_DIR"
   mkdir -p "$NEW_TEST_PACKAGE_DIR"
   mv "$OLD_TEST_PACKAGE_DIR"/* "$NEW_TEST_PACKAGE_DIR/"
   rm -rf "$OLD_TEST_PACKAGE_DIR"
